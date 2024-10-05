@@ -1,0 +1,20 @@
+.green {
+    color: darkgreen;
+}
+
+.orange {
+    color: darkorange;
+}
+
+.frame {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.mt-10 {
+    margin-top: 0.6em;
+}
+
+.md-10 {
+    margin-bottom: 0.8em;
+}

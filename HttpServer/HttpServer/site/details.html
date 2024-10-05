@@ -1,0 +1,36 @@
+﻿@{
+Layout = "layout";
+}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-4 frame">
+            <h2 class="text-center">Info:</h2>
+            <div>
+            <p><strong>Id:</strong> @Model.Exercise.Id</p>
+            <p><strong>Title:</strong> @Model.Exercise.Title</p>
+            <p><strong>Executor:</strong> @Model.Exercise.UserName</p>
+            <p>
+                @if (Model.Exercise.IsDone) {
+                <strong>Status: <span class="green">Done</span></strong>
+                } else {
+                <strong>Status: <span class="orange">New</span></strong>
+                }
+            </p>
+            <p><strong>Date of creation: </strong> @Model.Exercise.Created</p>
+            <p>
+                @if (Model.Exercise.Completed != DateTime.MinValue) {
+                <strong>Completion date: </strong><span>@Model.Exercise.Completed</span>
+                }
+            </p>
+        </div>
+        </div>
+        <div class="col-8 frame">
+            <h2 class="text-center">Description:</h2>
+            <p class="mt-6">@Model.Exercise.Description</p>
+        </div>
+        <div class="text-center mt-5">
+            <a href="index.html" class="btn btn-dark">Back</a>
+        </div>
+    </div>
+</div>

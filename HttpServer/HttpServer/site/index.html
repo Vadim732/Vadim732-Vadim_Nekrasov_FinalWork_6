@@ -1,0 +1,69 @@
+@{
+Layout = "layout";
+}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-9">
+            <h2 class="text-center md-10">List of tasks:</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Executor</th>
+                    <th>Date of creation</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach(var exercise in Model.Exercises){
+                <tr>
+                    <th>@exercise.Id</th>
+                    <th>@exercise.Title</th>
+                    <th>@exercise.UserName</th>
+                    <th>@exercise.Created</th>
+                    <th>
+                        @if (exercise.IsDone)
+                        {
+                        <span class="green">Done</span>
+                        }
+                        else
+                        {
+                        <span class="orange">New</span>
+                        }
+                    </th>
+                    <th>@if(!@exercise.IsDone){
+                        <a href="index.html?id=@exercise.Id&action=done" class="btn btn-success">Execute</a>
+                        }
+                        <a href="index.html?id=@exercise.Id&action=delete" class="btn btn-danger">Delete</a>
+                        <a href="details.html?id=@exercise.Id" class="btn btn-secondary">Details</a>
+                    </th>
+                </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-3">
+            <div class="text-center">
+                <h3 class="text-center md-10">Create new task:</h3>
+                <form action="index.html" method="post">
+                    <div class="col-auto mt-10">
+                        <label for="title" class="visually-hidden">Title</label>
+                        <input name="title" type="text" class="form-control" id="title" placeholder="Enter a title...">
+                    </div>
+                    <div class="col-auto mt-10">
+                        <label for="userName" class="visually-hidden">Executor</label>
+                        <input name="userName" type="text" class="form-control" id="userName" placeholder="Specify the performer...">
+                    </div>
+                    <div class="mb-3 mt-10">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="description" class="form-control" id="description" rows="6" cols="24"></textarea>
+                    </div>
+                    <p class="d-grid gap-2"><input type="submit" value="Create" class="btn btn-outline-dark"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
